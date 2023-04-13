@@ -1,0 +1,49 @@
+<!--pages/compute/compute.wxml-->
+<view>
+  <view class="compute-count">
+    <span wx:if="{{showResult}}">{{count}}/10</span>
+    <span wx:else>结果</span>
+  </view>
+  <timer id="timer" />
+  <view wx:if="{{showResult}}" class="compute-content">
+    <span>{{ list[count-1].num1 }} {{method}} {{ list[count-1].num2 }}</span>
+    <span>≈</span>
+    <span>{{result}}</span>
+    <keyboard bindmyevent="handleChange" bindsaveResult="handelSaveResult" bindreload="reload" />
+  </view>
+  <view wx:else class="result-container">
+    <text>（绿色数字为正确答案，红色括号内数字为你的答案，灰色为每道题花费时间）</text>
+    <view wx:for="{{list}}" wx:key="index" class="result-container-item">
+      <span>{{item.num1}} {{method}} {{item.num2}}</span>
+      <span> = </span>
+      <span style="color: #024e10">{{item.product}}</span>
+      <span style="color: #9f0000;">({{myResults[index]}})</span>
+      <span style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};">
+        <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
+      </span>
+      <span style="color: #b3b3b3; font-weight: lighter;">{{timeList[index]}}</span>
+    </view>
+  </view>
+  <t-dialog
+    visible="{{resultVisible}}"
+    close-on-overlay-click
+    bind:overlay-click="handelOverlay"
+  >
+    <view slot="content" class="dialog-content">
+      <view class="dialog-content-item">
+        <view class="dialog-content-item-top">
+          <t-icon name="check-circle-filled" size="48rpx" style=" color: #0c42b5;"  bind:click="onIconTap" />
+          <text>正确率</text>
+        </view>
+        <text>{{rate}}%</text>
+      </view>
+      <view class="dialog-content-item">
+        <view class="dialog-content-item-top">
+          <t-icon name="time-filled" size="48rpx" style=" color: #ec9b21;"  bind:click="onIconTap" />
+          <text>时间</text>
+        </view>
+        <text>{{duration}}</text>
+      </view>
+    </view>
+  </t-dialog>
+</view>

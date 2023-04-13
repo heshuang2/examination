@@ -3,5 +3,6 @@
   "projectname": "examination",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "2.25.4"
 }

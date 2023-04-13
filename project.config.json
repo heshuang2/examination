@@ -6,12 +6,12 @@
   },
   "miniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
-  "projectname": "ts-sass-demo",
-  "useCompilerPlugins": [
-    "typescript",
-    "sass"
-  ],
+  "projectname": "ts-less-demo",
   "setting": {
+    "useCompilerPlugins": [
+      "typescript",
+      "less"
+    ],
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -24,14 +24,16 @@
         "packageJsonPath": "./package.json",
         "miniprogramNpmDistDir": "./miniprogram/"
       }
-    ]
+    ],
+    "es6": true,
+    "enhance": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {},
   "srcMiniprogramRoot": "miniprogram/",
   "appid": "wx5da8788ac0ddc315",
-  "libVersion": "2.25.3",
+  "libVersion": "2.30.4",
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

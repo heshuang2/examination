@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-progress": "tdesign-miniprogram/progress/progress"
+  }
+}

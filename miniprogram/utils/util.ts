@@ -17,3 +17,10 @@ const formatNumber = (n: number) => {
   const s = n.toString()
   return s[1] ? s : '0' + s
 }
+
+
+export const imgBase64 = (url: string) => {
+  const base64 = wx.getFileSystemManager().readFileSync(url, "base64");
+  const base64Url = `data:image/png;base64,${base64}`;
+  return base64Url;
+};

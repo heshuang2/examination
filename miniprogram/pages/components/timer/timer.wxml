@@ -1,0 +1,12 @@
+<!--pages/components/timer/timer.wxml-->
+<view class="timer">
+  <view class="timer-container">
+    <span wx:for="{{minutes}}" wx:key="index" class="timer-container-num">
+      {{item}}
+    </span>
+    :
+    <span wx:for="{{seconds}}" wx:key="index" class="timer-container-num">
+      {{item}}
+    </span>
+  </view>
+</view>

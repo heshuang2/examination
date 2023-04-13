@@ -1,0 +1,15 @@
+<!--pages/components/keyboard/keyboard.wxml-->
+<view class="keyboard">
+  <view class="keyboard-connect"/>
+  <view class="keyboard-container">
+    <view 
+      wx:for="{{nums}}" 
+      wx:key="index"
+      data-index="{{index}}"
+      class="keyboard-container-item {{ active !== index ? 'key-up' : 'key-down' }} {{item === '下一题' && 'key-next'}}  {{item === '重开' && 'key-reload'}}"
+      bindtouchstart="keyStart" 
+      bindtouchend="keyEnd">
+      {{item}}
+    </view>
+  </view>
+</view>
