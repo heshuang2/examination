@@ -4,6 +4,7 @@
     <span wx:if="{{showResult}}">{{count}}/{{list.length}}</span>
     <span wx:else>结果</span>
   </view>
+  <drawing />
   <timer id="timer" />
   <view wx:if="{{showResult}}" class="compute-content">
     <span>{{ list[count-1].num1 }} {{method}} {{ list[count-1].num2 }}</span>
@@ -22,7 +23,7 @@
         <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
       </span>
       <span wx:else=""style="color: {{ ( myResults[index] <= item.product + 0.1 && myResults[index] >= item.product  -  0.1 ) ? '#024e10' : '#9f0000' }};">
-        <t-icon name="{{ ( myResults[index] <= item.product + 0.3 && myResults[index] >= item.product  -  0.3 ) ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
+        <t-icon name="{{ ( myResults[index] <= item.product + 0.3 && myResults[index] >= item.product  -  0.3 ) ? 'check' : 'close' }}" size="48rpx" bind:tap="onIconTap" />
       </span>
       <span style="color: #b3b3b3; font-weight: lighter; font-size: 1rem;">{{timeList[index]}}</span>
     </view>

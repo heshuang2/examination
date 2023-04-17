@@ -5,7 +5,8 @@
     "pages/compute/compute",
     "pages/agreed/agreed",
     "pages/components/keyboard/keyboard",
-    "pages/components/timer/timer"
+    "pages/components/timer/timer",
+    "pages/components/drawing/drawing"
   ],
   "window": {
     "backgroundTextStyle": "light",

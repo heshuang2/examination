@@ -1,0 +1,8 @@
+<!--pages/components/drawing/drawing.wxml-->
+<view class="drawing-icon" bind:tap="handleDrawing">
+  <t-icon name="{{visible ? 'close' : 'edit'}}" size="48rpx" />
+</view>
+<view class="drawing-container {{visible ? 'drawing-open' : 'drawing-close'}}">
+  <canvas canvas-id="canvas" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" disable-scroll="true" style="width: 100vh; height: 100%;">
+</canvas>
+</view>

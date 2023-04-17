@@ -49,7 +49,7 @@ Page<IIntroData, IIntroPage>({
   generateRandomNums(num, method) {
     let numbers: Ilist[] = [];
     let count = 0;
-    const max = wx.getStorageSync('questionCount');
+    const max = wx.getStorageSync('questionCount') == '' ? 10 : wx.getStorageSync('questionCount');
 
     while (count < max) {
       // let num = 10 + Math.floor(Math.random() * 10);

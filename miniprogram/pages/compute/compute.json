@@ -2,6 +2,7 @@
   "usingComponents": {
     "keyboard": "/pages/components/keyboard/keyboard",
     "timer": "/pages/components/timer/timer",
+    "drawing": "/pages/components/drawing/drawing",
     "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-fab": "tdesign-miniprogram/fab/fab"
   }
