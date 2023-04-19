@@ -11,6 +11,8 @@
   "main": ".eslintrc.js",
   "description": "",
   "dependencies": {
+    "animate.css": "^4.1.1",
+    "cax": "^1.3.2",
     "dayjs": "^1.11.7",
     "tdesign-miniprogram": "^1.1.0"
   }

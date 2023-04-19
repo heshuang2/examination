@@ -3,12 +3,12 @@
   <view class="card">
     <t-cell title="速算练习" hover arrow  bindtap="bindViewTap">
       <view slot="left-icon">
-        <t-icon name="https://great.wzznft.com/i/2023/04/11/nyg2py.png" size="48" data-name="" bind:click="onIconTap" />
+        <t-icon name="https://s1.ax1x.com/2023/04/18/p9P7Bad.png" size="48" data-name="" bind:click="onIconTap" />
       </view>
     </t-cell>
     <t-cell title="数资题目" hover arrow>
       <view slot="left-icon">
-        <t-icon name="https://great.wzznft.com/i/2023/04/11/nyg8t2.png" size="48" data-name="" bind:click="onIconTap" />
+        <t-icon name="https://s1.ax1x.com/2023/04/18/p9P70VH.png" size="48" data-name="" bind:click="onIconTap" />
       </view></t-cell>
   </view>
 </view>

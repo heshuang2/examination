@@ -1,9 +1,14 @@
-
+.compute {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 // 计算页面
 .compute-count {
   color: #ffffff;
   font-size: 1.8rem;
   display: flex;
+  flex: 1;
   span {
     background-color: rgb(64, 64, 248);
     height: 3rem;
@@ -19,6 +24,8 @@
   font-weight: bold;
   margin-top: 2rem;
   text-align: center;
+  height: 100%;
+  z-index: 1;
   span {
     text-align: center;
     display: inline-block;

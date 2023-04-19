@@ -165,6 +165,8 @@ Page<IIntroData, IIntroPage>({
       return;
     }
     const timer = this.selectComponent('#timer');
+    const drawing = this.selectComponent('#drawing');
+    drawing.clickClearAll();
     const time: string = timer.saveOnceTime();
     this.data.timeList.push(time);
     this.setData({
