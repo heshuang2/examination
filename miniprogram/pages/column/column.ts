@@ -17,6 +17,7 @@ Page({
       {name: 'mn×(10-m)n', value: 0},
       {name: 'mn×m(10-n)', value: 1},
       {name: 'm(10-m)×nn', value: 2},
+      {name: '十位 × 个位', value: 3}
     ],
     hundredMultiply: [
       {name: '百位+百位', value: 999, method: '+'},
@@ -24,7 +25,10 @@ Page({
     ],
     division: [
       {name: '分母特殊', value: 888, method: '÷'},
-      {name: '分母 9×n', value: 889, method: '÷'}
+      {name: '分母 9×n', value: 889, method: '÷'},
+      {name: '百位/10n', value: 110, method: '÷'},
+      {name: '百位/111', value: 111, method: '÷'},
+      {name: '百位/百位', value: 112, method: '÷'},
     ],
     active: null,
     fabButton: {

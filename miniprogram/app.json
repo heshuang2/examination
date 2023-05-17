@@ -3,7 +3,6 @@
     "pages/home/homes",
     "pages/column/column",
     "pages/compute/compute",
-    "pages/agreed/agreed",
     "pages/components/keyboard/keyboard",
     "pages/components/timer/timer",
     "pages/components/drawing/drawing"
