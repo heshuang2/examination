@@ -1,0 +1,10 @@
+<!--pages/components/questionVolume/questionVolume.wxml-->
+<t-fab icon="order-ascending" button-props="{{fabButton}}" bind:click="handlePopup" text="题量选择" />
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <t-radio-group t-class="horizontal-box" value="{{questionCount}}" bind:change="onChange">
+      <view wx:for="{{question}}" wx:key="index" class="group-card {{questionCount == item.value ? 'group-card-active' : ''}}">
+        <t-icon wx:if="{{questionCount == item.value}}" name="check" t-class="group-card__icon" />
+        <t-radio value="{{item.value}}" label="{{item.label}}" icon="none" borderless  t-class="group-card__label" />
+      </view>
+    </t-radio-group>
+  </t-popup>

@@ -1,0 +1,12 @@
+<!--pages/countCapital/countCapital.wxml-->
+<view class="body-container" style="background-color: #ffffff;">
+  <questionVolume />
+  <view class="column-title" style="margin-top: 0;">基期</view>
+  <view>
+    <view class="column-row">
+      <view wx:for="{{jqSubtract}}" wx:key="index" class="column-col">
+        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>
