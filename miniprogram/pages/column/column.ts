@@ -7,47 +7,40 @@ Page({
    */
   data: {
     tenAddSubtract: [
-      {name: '十位+十位', value: 99, method: '+'},
-      {name: '十位-十位', value: -99,  method: '-'},
+      {name: '十位+十位', value: 900, method: '+', },
+      {name: '十位-十位', value: 901,  method: '-'},
+      {name: '百位+百位', value: 902, method: '+'},
+      {name: '百位-百位', value: 903,  method: '-'},
+      {name: '十位 × 个位', value: 904, method: '×'}
     ],
     tenMultiply: [
-      {name: '1*×1*', value: 10},
-      {name: '9*×9*', value: 90},
-      {name: '*5×*5', value: 5},
-      {name: 'mn×(10-m)n', value: 0},
-      {name: 'mn×m(10-n)', value: 1},
-      {name: 'm(10-m)×nn', value: 2},
-      {name: '十位 × 个位', value: 3}
+      {name: '平方数', value: 300, method: '×'},
+      {name: '百化分', value: 301, method: '%'},
     ],
     hundredMultiply: [
-      {name: '百位+百位', value: 999, method: '+'},
-      {name: '百位-百位', value: -999,  method: '-'},
+      {name: '1*×1*', value: 100, method: '×'},
+      {name: '9*×9*', value: 101, method: '×'},
+      {name: '*5×*5', value: 102, method: '×'},
+      {name: 'mn×(10-m)n', value: 103, method: '×'},
+      {name: 'mn×m(10-n)', value: 104, method: '×'},
+      {name: 'm(10-m)×nn', value: 105, method: '×'},
     ],
     division: [
-      {name: '分母特殊', value: 888, method: '÷'},
-      {name: '分母 9×n', value: 889, method: '÷'},
-      {name: '百位/10n', value: 110, method: '÷'},
-      {name: '百位/111', value: 111, method: '÷'},
-      {name: '百位/百位', value: 112, method: '÷'},
+      {name: '分母特殊', value: 200, method: '÷'},
+      {name: '分母 9×n', value: 201, method: '÷'},
+      {name: '百位/10n', value: 202, method: '÷'},
+      {name: '百位/111', value: 203, method: '÷'},
+      {name: '百位/百位', value: 204, method: '÷'},
     ],
     active: null,
-    fabButton: {
-      theme: 'primary',
-      variant: 'outline',
-      size: 'small'
-    },
-    question: [
-      {label: '5题', value: 5},
-      {label: '10题', value: 10},
-      {label: '15题', value: 15},
-    ],
-    questionCount: 10
   },
 
   bindViewTap: function (e: { currentTarget: { dataset: { [x: string]: any; }; }; }) {
     // 传递的参数
     const value = e.currentTarget.dataset['value'];
     const method = e.currentTarget.dataset['method'];
+    console.log(method);
+    
     this.setData({
       active: e.currentTarget.dataset['value']
     })
@@ -56,32 +49,11 @@ Page({
     })
   },
 
-  handlePopup() {
-    this.setData({
-      visible: true
-    })
-  },
-  onVisibleChange(e) {
-    this.setData({
-      visible: e.detail.visible,
-    });
-  },
-  onChange(e) {
-    this.setData({ 
-      questionCount: e.detail.value,
-      visible: false,
-     });
-    wx.setStorageSync('questionCount', e.detail.value);
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    const count = wx.getStorageSync('questionCount') == '' ? 10 : wx.getStorageSync('questionCount');
-    this.setData({
-      questionCount: count || 10
-    })
+
   },
 
   /**

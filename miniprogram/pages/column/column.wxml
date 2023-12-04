@@ -1,40 +1,32 @@
 <!--pages/column/column.wxml-->
-<view class="body-container" style="background-color: #ffffff;">
-  <t-fab icon="order-ascending" button-props="{{fabButton}}" bind:click="handlePopup" text="题量选择" />
-  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
-    <t-radio-group t-class="horizontal-box" value="{{questionCount}}" bind:change="onChange">
-      <view wx:for="{{question}}" wx:key="index" class="group-card {{questionCount == item.value ? 'group-card-active' : ''}}">
-        <t-icon wx:if="{{questionCount == item.value}}" name="check" t-class="group-card__icon" />
-        <t-radio value="{{item.value}}" label="{{item.label}}" icon="none" borderless  t-class="group-card__label" />
-      </view>
-    </t-radio-group>
-  </t-popup>
-  <view class="column-title" style="margin-top: 0;">十位数加减法</view>
+<view class="body-container" style="background-color: #ffffff; padding-bottom: 2.5rem;">
+  <questionVolume />
   <view>
+    <view class="column-title">基础运算</view>
     <view class="column-row">
       <view wx:for="{{tenAddSubtract}}" wx:key="index" class="column-col">
         <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
       </view>
     </view>
   </view>
-  <view class="column-title">百位数加减法</view>
   <view>
+    <view class="column-title">特殊数</view>
+    <view class="column-row">
+      <view wx:for="{{tenMultiply}}" wx:key="index" class="column-col">
+        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="column-title">特殊乘法</view>
     <view class="column-row">
       <view wx:for="{{hundredMultiply}}" wx:key="index" class="column-col">
         <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
       </view>
     </view>
   </view>
-  <view class="column-title">十位数乘法</view>
   <view>
-    <view class="column-row">
-      <view wx:for="{{tenMultiply}}" wx:key="index" class="column-col">
-        <view data-value="{{item.value}}" data-index="{{index}}" data-method="×" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
-      </view>
-    </view>
-  </view>
-  <view class="column-title">除法</view>
-  <view>
+    <view class="column-title">特殊除法</view>
     <view class="column-row">
       <view wx:for="{{division}}" wx:key="index" class="column-col">
         <view data-value="{{item.value}}" data-index="{{index}}" data-method="÷" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>

@@ -1,5 +1,7 @@
 // pages/compute/compute.ts
 
+import { getNum } from "../../utils/getNum";
+
 interface IIntroPage {
   generateRandomNums: (value: number, method: any) => Ilist[];
   handleChange: (e: { detail: string }) => void;
@@ -60,6 +62,7 @@ Page<IIntroData, IIntroPage>({
         ['-', { compute: () => num1 - num2 }],
         ['×', { compute: () => num1 * num2 }],
         ['÷', { compute: () => num1 / num2 }],
+        ['%', { compute: () => num2 }],
       ])
 
       let product = map.get(method)?.compute(); // 计算两数积
@@ -82,94 +85,8 @@ Page<IIntroData, IIntroPage>({
   },
 
   // 返回的两个数字
-  generate(num) {
-    if ([10, 90].includes(num)) {
-      return {
-        num1: num + Math.floor(Math.random() * 10),
-        num2: num + Math.floor(Math.random() * 10)
-      };
-    } else if (num === 5) {
-      return {
-        num1: Math.ceil(Math.random() * 1000000000 % 9) * 10 + num,
-        num2: Math.ceil(Math.random() * 1000000000 % 9) * 10 + num,
-      };
-    } else if (num === 0) {
-      const ones = Math.ceil(Math.random() * 1000000000 % 9);
-      const place = Math.ceil(Math.random() * 1000000000 % 9);
-      return {
-        num1: place * 10 + ones,
-        num2: (10 - place) * 10 + ones
-      };
-    } else if (num === 1) {
-      const ones = Math.ceil(Math.random() * 1000000000 % 9);
-      const place = Math.ceil(Math.random() * 1000000000 % 9);
-      return {
-        num1: place * 10 + ones,
-        num2: place * 10 + (10 - ones)
-      };
-    } else if (num === 2) {
-      const first = Math.ceil(Math.random() * 1000000000 % 9);
-      const second = Math.ceil(Math.random() * 1000000000 % 9);
-      return {
-        num1: first * 10 + (10 - first),
-        num2: second * 10 + second
-      };
-    } else if (num === 3) {
-      // 生成10到99之间的随机整数，十位数为1~9，个位数为0~9
-      const num1 = Math.floor(Math.random() * 90 + 10);
-      //  生成1到9之间的随机整数
-      const num2 = Math.floor(Math.random() * 9 + 1);
-      return { num1, num2 };
-    } else if (num === 99) {
-      // 生成10到99之间的随机整数，十位数为1~9，个位数为0~9
-      const num1 = Math.floor(Math.random() * 90 + 10);
-      //  生成10到99之间的随机整数，十位数为1~9，个位数为0~9
-      const num2 = Math.floor(Math.random() * 90 + 10);
-      return { num1, num2 };
-    } else if (num === -99) {
-      // 生成10到99之间的随机整数，十位数为1~9，个位数为0~9
-      const num1 = Math.floor(Math.random() * 90 + 10);
-      // 生成10到num1-1之间的随机整数
-      const num2 = Math.floor(Math.random() * (num1 - 10) + 10);
-      return { num1, num2 };
-    } else if (num === 999) {
-      // 生成100到999之间的随机整数，百位数为1~9， 十位数为1~9，个位数为0~9,
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      //  生成100到999之间的随机整数，百位数为1~9，十位数为1~9，个位数为0~9
-      const num2 = Math.floor(Math.random() * 900 + 100);
-      return { num1, num2 };
-    } else if (num === -999) {
-      // 生成100到999之间的随机整数，百位数为1~9，十位数为1~9，个位数为0~9
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      // 生成10到num1-1之间的随机整数
-      const num2 = Math.floor(Math.random() * (num1 - 100) + 100);
-      return { num1, num2 };
-    } else if (num === 888) {
-      // 生成100到999之间的随机整数，百位数为1~9，十位数为1~9，个位数为0~9
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      const arr = [50, 5, 333, 25, 250, 20, 200, 167, 143, 125, 111];
-      // const float = Math.floor(Math.random() * 3) - 1;
-      const num2 = arr[Math.floor(Math.random() * arr.length)];
-      return { num1, num2 };
-    } else if (num === 889) {
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      const float = Math.floor(Math.random() * 9 + 1);
-      const num2 = 9 * float;
-      return { num1, num2 };
-    } else if (num === 110) {
-      // 生成100到999之间的随机整数，百位数为1~9，十位数为1~9，个位数为0~9
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      const num2 = Math.floor(Math.random() * 9 + 101);
-      return { num1, num2 };
-    } else if (num === 111) {
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      const num2 = Math.floor(Math.random() * 13) + 105;
-      return { num1, num2 };
-    } else if (num === 112) {
-      const num1 = Math.floor(Math.random() * 900 + 100);
-      const num2 = Math.floor(Math.random() * 900 + 100);
-      return { num1, num2 };
-    }
+  generate(num: number) {
+    return getNum(num);
   },
 
   handleChange(e) {
@@ -247,6 +164,7 @@ Page<IIntroData, IIntroPage>({
    * 生命周期函数--监听页面加载
    */
   onLoad(option: { index: any; method: any }) {
+    
     let randomNums = this.generateRandomNums(Number(option.index), option.method);
     this.setData({
       list: randomNums,

@@ -5,7 +5,10 @@
     "pages/compute/compute",
     "pages/components/keyboard/keyboard",
     "pages/components/timer/timer",
-    "pages/components/drawing/drawing"
+    "pages/components/drawing/drawing",
+    "pages/countCapital/countCapital",
+    "pages/components/questionVolume/questionVolume",
+    "pages/components/moveBtn/moveBtn"
   ],
   "window": {
     "backgroundTextStyle": "light",

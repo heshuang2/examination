@@ -14,6 +14,12 @@ Page({
     })
   },
 
+  countCapitalTap() {
+    wx.navigateTo({
+      url: '../countCapital/countCapital',
+    })
+  },
+
 
   //第一次获取用户信息
   getUserProfile: function () {

@@ -7,23 +7,45 @@
   <drawing wx:if="{{showResult}}" id="drawing" />
   <timer id="timer" />
   <view wx:if="{{showResult}}" class="compute-content">
-    <span>{{ list[count-1].num1 }} {{method}} {{ list[count-1].num2 }}</span>
-    <span>{{method === '÷' ? '≈' : '＝'}}</span>
-    <span>{{result}}</span>
+    <view wx:if="{{method == '%'}}">
+      <span>{{list[count - 1].num1}} %</span>
+      <span>＝</span>
+      <view class="mark-result">
+        <span>1</span>
+        <span></span>
+        <span>{{result}}</span>
+      </view>
+    </view>
+    <view wx:else>
+      <span>{{ list[count-1].num1 }} {{method}} {{ list[count-1].num2 }}</span>
+      <span>{{method === '÷' ? '≈' : '＝'}}</span>
+      <span>{{result}}</span>
+    </view>
     <keyboard bindmyevent="handleChange" bindsaveResult="handelSaveResult" bindreload="reload" />
   </view>
   <view wx:else class="result-container">
     <text>（绿色数字为正确答案，红色括号内数字为你的答案，灰色为每道题花费时间）</text>
     <view wx:for="{{list}}" wx:key="index" class="result-container-item">
-      <span>{{item.num1}} {{method}} {{item.num2}}</span>
-      <span> {{method === '÷' ? '≈' : '＝'}} </span>
-      <span style="color: #024e10">{{item.product}}</span>
-      <span style="color: #9f0000;">({{myResults[index]}})</span>
-      <span wx:if="{{method !== '÷'}}" style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};">
+      <view wx:if="{{method == '%'}}" class="result-container-item-left">
+        <span>{{item.num1}} {{method}}</span>
+        <span> ＝ </span>
+        <span style="color: #024e10">1/{{item.product}}</span>
+        <span style="color: #9f0000;">(1/{{myResults[index]}})</span>
+      </view>
+      <view wx:else class="result-container-item-left">
+        <span>{{item.num1}} {{method}} {{item.num2}}</span>
+        <span> {{method === '÷' ? '≈' : '＝'}} </span>
+        <span style="color: #024e10">{{item.product}}</span>
+        <span style="color: #9f0000;">({{myResults[index]}})</span>
+      </view>
+      <span wx:if="{{method == '÷'}}" style="color: {{ ( myResults[index] <= item.product + 0.1 && myResults[index] >= item.product  -  0.1 ) ? '#024e10' : '#9f0000' }};">
+        <t-icon name="{{ ( myResults[index] <= item.product + 0.3 && myResults[index] >= item.product  -  0.3 ) ? 'check' : 'close' }}" size="48rpx" bind:tap="onIconTap" />
+      </span>
+      <span wx:elif="{{method == '%'}}" style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};">
         <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
       </span>
-      <span wx:else="" style="color: {{ ( myResults[index] <= item.product + 0.1 && myResults[index] >= item.product  -  0.1 ) ? '#024e10' : '#9f0000' }};">
-        <t-icon name="{{ ( myResults[index] <= item.product + 0.3 && myResults[index] >= item.product  -  0.3 ) ? 'check' : 'close' }}" size="48rpx" bind:tap="onIconTap" />
+      <span wx:else="" style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};">
+        <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
       </span>
       <span style="color: #b3b3b3; font-weight: lighter; font-size: 1rem;">{{timeList[index]}}</span>
     </view>
