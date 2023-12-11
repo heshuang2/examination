@@ -1,0 +1,33 @@
+<!--pages/components/result/result.wxml-->
+<view class="result-table">
+  <text>（绿色为正确答案，红色括号内为你的答案）</text>
+  <view class="result-tr result-th">
+    <view class="result-td">题目</view>
+    <view class="result-td">结果</view>
+    <view class="result-td">时间</view>
+  </view>
+  <view wx:for="{{list}}" wx:key="index" class="result-tr">
+    <view wx:if="{{method == '%'}}" class="result-td">
+      <span>{{item.num1}}{{method}}</span>
+      <span> ＝ </span>
+      <span style="color: #024e10; padding: 0 .2rem;">1/{{item.product}}</span>
+      <span style="color: #9f0000; padding: 0 .2rem;">(1/{{myResults[index]}})</span>
+    </view>
+    <view wx:else class="result-td">
+      <span>{{item.num1}} {{method}} {{item.num2}}</span>
+      <span> {{method === '÷' ? '≈' : '＝'}} </span>
+      <span style="color: #024e10; padding: 0 .2rem;">{{item.product}}</span>
+      <span style="color: #9f0000; padding: 0 .2rem;">({{myResults[index]}})</span>
+    </view>
+    <view wx:if="{{method == '÷'}}" style="color: {{ ( myResults[index] <= item.product + 0.1 && myResults[index] >= item.product  -  0.1 ) ? '#024e10' : '#9f0000' }};" class="result-td">
+      <t-icon name="{{ ( myResults[index] <= item.product + 0.3 && myResults[index] >= item.product  -  0.3 ) ? 'check' : 'close' }}" size="48rpx" bind:tap="onIconTap" />
+    </view>
+    <view wx:elif="{{method == '%'}}" style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};" class="result-td">
+      <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
+    </view>
+    <view wx:else style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }}; " class="result-td">
+      <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
+    </view>
+    <view style="color: #b3b3b3; font-weight: lighter; font-size: 1.2rem;" class="result-td">{{timeList[index]}}</view>
+  </view>
+</view>

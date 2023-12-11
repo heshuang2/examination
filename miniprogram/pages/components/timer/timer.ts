@@ -80,12 +80,14 @@ Component({
       });
       const m = Math.floor(diff / 60);
       const s = Math.round(diff % 60);
-      return m + '分' + s + '秒';
+      return m === 0 ? s + '秒'  : m + '分' + s + '秒';
     },
     destoryTime() {
       clearTimeout(this.data.timer as unknown as number);
     },
     reload() {
+      clearTimeout(this.data.timer as unknown as number);
+      
       this.setData({
         minutes: '00',
         seconds: '00',
@@ -93,7 +95,6 @@ Component({
         preDuration: 0, // 上一题时长
         durationList: [], // 时长list
       })
-      clearTimeout(this.data.timer as unknown as number);
       this.changeTime();
     }
   }

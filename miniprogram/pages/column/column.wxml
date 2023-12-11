@@ -5,7 +5,7 @@
     <view class="column-title">基础运算</view>
     <view class="column-row">
       <view wx:for="{{tenAddSubtract}}" wx:key="index" class="column-col">
-        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
+        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" data-name="{{item.name}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
       </view>
     </view>
   </view>
@@ -13,7 +13,7 @@
     <view class="column-title">特殊数</view>
     <view class="column-row">
       <view wx:for="{{tenMultiply}}" wx:key="index" class="column-col">
-        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
+        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" data-name="{{item.name}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
       </view>
     </view>
   </view>
@@ -21,7 +21,7 @@
     <view class="column-title">特殊乘法</view>
     <view class="column-row">
       <view wx:for="{{hundredMultiply}}" wx:key="index" class="column-col">
-        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
+        <view data-value="{{item.value}}" data-index="{{index}}" data-method="{{item.method}}" data-name="{{item.name}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
       </view>
     </view>
   </view>
@@ -29,7 +29,7 @@
     <view class="column-title">特殊除法</view>
     <view class="column-row">
       <view wx:for="{{division}}" wx:key="index" class="column-col">
-        <view data-value="{{item.value}}" data-index="{{index}}" data-method="÷" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
+        <view data-value="{{item.value}}" data-index="{{index}}" data-method="÷"       data-name="{{item.name}}" bindtap="bindViewTap" class="column-col-content {{ active !== item.value ? 'column-col-noactive' : 'column-col-active' }}">{{item.name}}</view>
       </view>
     </view>
   </view>

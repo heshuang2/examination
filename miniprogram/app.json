@@ -3,12 +3,13 @@
     "pages/home/homes",
     "pages/column/column",
     "pages/compute/compute",
+    "pages/statistic/statistic",
     "pages/components/keyboard/keyboard",
     "pages/components/timer/timer",
     "pages/components/drawing/drawing",
     "pages/countCapital/countCapital",
     "pages/components/questionVolume/questionVolume",
-    "pages/components/moveBtn/moveBtn"
+    "pages/components/result/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

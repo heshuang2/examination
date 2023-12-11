@@ -3,11 +3,13 @@
   flex-direction: column;
   height: 100%;
 }
+
 // 计算页面
 .compute-count {
   color: #ffffff;
   font-size: 1.8rem;
   display: flex;
+
   // flex: 1;
   span {
     background-color: rgb(64, 64, 248);
@@ -27,12 +29,14 @@
   height: 100%;
   z-index: 1;
   position: relative;
+
   span {
     text-align: center;
     display: inline-block;
     min-width: 3rem;
-    vertical-align:middle;
+    vertical-align: middle;
   }
+
   span:nth-child(3) {
     border-bottom: .1rem solid #e8e8e8;
     vertical-align: bottom;
@@ -42,52 +46,23 @@
 .mark-result {
   display: inline-flex;
   flex-direction: column;
-  position: absolute;
   transform: translateY(-19%);
-  
+
   :nth-child(2) {
     border-bottom: 2px solid #000000;
   }
 
   :nth-child(3) {
-    min-height: 3.3rem;
+    height: 3.3rem;
     border-bottom: .1rem solid #e8e8e8;
   }
 
 }
 
-.result-container {
-
-  text {
-    text-align: center;
-    display: inline-block;
-    color: #ec9b21;
-    margin: 1rem;
-  }
-
-  &-item {
-    display: flex;
-    justify-content: center;
-    font-size: 1.4rem;
-    padding: .5rem 0;
-
-    &-left {
-      display: flex;
-    }
-
-    span {
-      padding-right: .6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  &-reload {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-  }
+.result-reload {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .dialog-content {
@@ -110,13 +85,13 @@
       color: #5b5b5d;
       font-weight: lighter;
       margin-bottom: 1rem;
-      
+
       .icon--t-icon-base {
         padding-right: .5rem;
       }
     }
 
-    > text {
+    >text {
       font-size: 1.6rem;
       text-align: right;
     }

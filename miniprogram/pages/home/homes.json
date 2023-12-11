@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
-    "t-cell": "tdesign-miniprogram/cell/cell"
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
   }
 }

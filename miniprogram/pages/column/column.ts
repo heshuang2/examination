@@ -39,13 +39,14 @@ Page({
     // 传递的参数
     const value = e.currentTarget.dataset['value'];
     const method = e.currentTarget.dataset['method'];
-    console.log(method);
+    const name = e.currentTarget.dataset['name'];
+    console.log(name);
     
     this.setData({
       active: e.currentTarget.dataset['value']
     })
     wx.navigateTo({
-      url: `/pages/compute/compute?index=${value}&method=${method}`,
+      url: `/pages/compute/compute?index=${value}&method=${method}&name=${name}`,
     })
   },
 

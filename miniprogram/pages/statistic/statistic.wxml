@@ -1,0 +1,44 @@
+<!--pages/statistic/statistic.wxml-->
+<view class="body-container">
+  <text class="statistic-title">数据统计</text>
+  <view class="statistic-content">
+    <view class="statistic-item">
+      <span>答题总数</span>
+      <span>{{total}}</span>
+    </view>
+    <view class="statistic-item">
+      <span>今日练习</span>
+      <span>{{nowTotal}}</span>
+    </view>
+    <view class="statistic-item">
+      <span>正确率</span>
+      <span>{{rate}}</span>
+    </view>
+    <view class="statistic-item">
+      <span>今日正确率</span>
+      <span>{{nowRate}}</span>
+    </view>
+  </view>
+  <text class="statistic-title">练习记录</text>
+    <scroll-view scroll-x scroll-y style="white-space: nowrap; width: 100%; margin: 1rem 0">
+      <view class="statistic-tabel">
+        <view class="statistic-tr statistic-th">
+          <view class="statistic-td" style="width: 6rem;">模块</view>
+          <view class="statistic-td" style="width: 13rem;">日期</view>
+          <view class="statistic-td" style="width: 3rem;">数量</view>
+          <view class="statistic-td" style="width: 3rem;">正确</view>
+          <view class="statistic-td" style="width: 4rem;">正确率</view>
+          <view class="statistic-td" style="width: 4rem;">耗时</view>
+        </view>
+        <view wx:for="{{recordData}}" wx:key="index" class="statistic-tr">
+          <view class="statistic-td" style="width: 6rem;">{{item.name}}</view>
+          <view class="statistic-td" style="width: 13rem;">{{item.date}} {{item.time}}</view>
+          <view class="statistic-td" style="width: 3rem;">{{item.total}}</view>
+          <view class="statistic-td" style="width: 3rem;">{{item.rightNum}}</view>
+          <view class="statistic-td" style="width: 4rem;">{{item.rate}}%</view>
+          <view class="statistic-td" style="width: 4rem;">{{item.duration}}</view>
+        
+        </view>
+      </view>
+    </scroll-view>
+</view>

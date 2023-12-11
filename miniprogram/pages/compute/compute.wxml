@@ -8,7 +8,7 @@
   <timer id="timer" />
   <view wx:if="{{showResult}}" class="compute-content">
     <view wx:if="{{method == '%'}}">
-      <span>{{list[count - 1].num1}} %</span>
+      <span>{{list[count - 1].num1}}%</span>
       <span>＝</span>
       <view class="mark-result">
         <span>1</span>
@@ -23,34 +23,11 @@
     </view>
     <keyboard bindmyevent="handleChange" bindsaveResult="handelSaveResult" bindreload="reload" />
   </view>
-  <view wx:else class="result-container">
-    <text>（绿色数字为正确答案，红色括号内数字为你的答案，灰色为每道题花费时间）</text>
-    <view wx:for="{{list}}" wx:key="index" class="result-container-item">
-      <view wx:if="{{method == '%'}}" class="result-container-item-left">
-        <span>{{item.num1}} {{method}}</span>
-        <span> ＝ </span>
-        <span style="color: #024e10">1/{{item.product}}</span>
-        <span style="color: #9f0000;">(1/{{myResults[index]}})</span>
-      </view>
-      <view wx:else class="result-container-item-left">
-        <span>{{item.num1}} {{method}} {{item.num2}}</span>
-        <span> {{method === '÷' ? '≈' : '＝'}} </span>
-        <span style="color: #024e10">{{item.product}}</span>
-        <span style="color: #9f0000;">({{myResults[index]}})</span>
-      </view>
-      <span wx:if="{{method == '÷'}}" style="color: {{ ( myResults[index] <= item.product + 0.1 && myResults[index] >= item.product  -  0.1 ) ? '#024e10' : '#9f0000' }};">
-        <t-icon name="{{ ( myResults[index] <= item.product + 0.3 && myResults[index] >= item.product  -  0.3 ) ? 'check' : 'close' }}" size="48rpx" bind:tap="onIconTap" />
-      </span>
-      <span wx:elif="{{method == '%'}}" style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};">
-        <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
-      </span>
-      <span wx:else="" style="color: {{ item.product === myResults[index] ? '#024e10' : '#9f0000' }};">
-        <t-icon name="{{ item.product === myResults[index] ? 'check' : 'close' }}" size="48rpx" bind:click="onIconTap" />
-      </span>
-      <span style="color: #b3b3b3; font-weight: lighter; font-size: 1rem;">{{timeList[index]}}</span>
-    </view>
-    <view class="result-container-reload">
+  <view wx:else >
+    <result list="{{list}}" myResults="{{myResults}}" timeList="{{timeList}}" method="{{method}}" />
+    <view class="result-reload">
       <t-button icon="refresh" size="large" theme="light" variant="outline" bind:tap="refresh">再来一组</t-button>
+      <t-button icon="chart-line" size="large" theme="primary" variant="outline" bind:tap="toStatistic">查看统计</t-button>
     </view>
   </view>
   <t-dialog visible="{{resultVisible}}" close-on-overlay-click bind:overlay-click="handelOverlay">

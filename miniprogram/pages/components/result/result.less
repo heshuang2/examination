@@ -1,0 +1,52 @@
+/* pages/components/result/result.wxss */
+.result-table {
+  display: flex;
+  flex-direction: column;     /* 排列形式: 向下 */
+
+  text {
+    text-align: center;
+    display: inline-block;
+    color: #ec9b21;
+    margin: 1rem;
+  }
+
+  .result-tr {
+    display: flex;
+    font-size: 1.4rem;
+    padding: 0 1rem;
+    flex-direction: row;
+  }
+
+
+  .result-tr .result-td {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;            /* 自动换行 */
+    align-items: center;        /* 交叉轴居中 */
+    border-bottom: 1px solid #E8E8E8;      /* 单元格上线框 */
+  }
+
+  .result-th {
+    font-size: 1.2rem;
+    text-align: left;
+    border-top: 1px solid #E8E8E8;
+  }
+
+  .result-td {
+    padding: .5rem 0;
+  }
+
+  .result-td:nth-child(1) {
+    flex: 1;
+  }
+
+  .result-td:nth-child(2) {
+    width: 4rem;
+    justify-content:center;     /* 主轴居中 */
+  }
+
+  .result-td:nth-child(3) {
+    width: 4rem;
+    flex-direction: row-reverse;
+  }
+}

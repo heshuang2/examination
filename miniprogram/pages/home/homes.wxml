@@ -1,6 +1,10 @@
 <!--pages/home/homes.wxml-->
-<view class="body-container">
-  <view class="card" style="margin-top: .5rem;">
-    <t-cell title="速算练习" description="练习计算速度" hover arrow  bindtap="bindViewTap" />
+<view class="body-container" style="padding: 1rem 0">
+  <t-notice-bar visible marquee="{{marquee}}" content="数据统计功能上线，目前数据只能缓存在微信小程序中，如果清除小程序缓存会导致数据清空，请注意！" />
+  <view class="home-card">
+    <view wx:for="{{homeCard}}" wx:key="index" style="background-color: {{item.bg}};" class="home-card-item" data-index="{{item.path}}" bind:tap="bindViewTap">
+      <t-image src="{{item.imgSrc}}" mode="heightFix" />
+      <view>{{item.title}}</view>
+    </view>
   </view>
 </view>

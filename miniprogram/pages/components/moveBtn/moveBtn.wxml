@@ -1,1 +1,0 @@
-<button catchtouchmove="buttonMove" catchtouchstart="buttonStart" catchtouchend="buttonEnd" style="postion:fixed;top:{{buttonTop}}px;left:{{buttonLeft}}px;width: 50px;height:50px;border-radius:50px;position:fixed;background:#ff6700;line-height:50px;font-size:25pt;color:#fff;z-index: 999;">+</button>

@@ -6,11 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
+    homeCard: [
+      { 
+        title: '速算练习',
+        imgSrc: '/assets/img/banner1.png',
+        bg: '#EFA63B',
+        path: '../column/column'
+      },
+      { 
+        title: '数据统计',
+        imgSrc: '/assets/img/banner2.png',
+        bg: '#5D70EF',
+        path: '../statistic/statistic'
+      },
+    ],
+    marquee: {
+      speed: 80,
+      loop: -1,
+      delay: 0,
+    }
   },
 
-  bindViewTap() {
+  bindViewTap(e) {
+    const url = e.currentTarget.dataset?.index;
     wx.navigateTo({
-      url: '../column/column',
+      url
     })
   },
 

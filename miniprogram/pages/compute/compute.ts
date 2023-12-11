@@ -1,6 +1,7 @@
 // pages/compute/compute.ts
 
 import { getNum } from "../../utils/getNum";
+import { toDay } from "../../utils/util";
 
 interface IIntroPage {
   generateRandomNums: (value: number, method: any) => Ilist[];
@@ -24,7 +25,8 @@ interface IIntroData {
   resultVisible: boolean,
   rate: number,
   duration: string,
-  value: number
+  value: number,
+  name: string
 }
 
 Page<IIntroData, IIntroPage>({
@@ -45,6 +47,7 @@ Page<IIntroData, IIntroPage>({
     resultVisible: false,
     rate: 0, // 正确率
     duration: '', //时长
+    name: ''
   },
 
   // 十位数乘法返回结果
@@ -104,6 +107,7 @@ Page<IIntroData, IIntroPage>({
     const drawing = this.selectComponent('#drawing');
     drawing.clickClearAll();
     const time: string = timer.saveOnceTime();
+
     this.data.timeList.push(time);
     this.setData({
       timeList: this.data.timeList
@@ -112,6 +116,7 @@ Page<IIntroData, IIntroPage>({
     this.setData({
       myResults: this.data.myResults
     })
+    // 判断题目是否答完
     if (this.data.count < this.data.list.length) {
       this.setData({
         result: ''
@@ -135,6 +140,22 @@ Page<IIntroData, IIntroPage>({
         duration: timer.data.minutes + ':' + timer.data.seconds,
         showResult: false
       })
+      // 存储答题数据
+      const statisticData = wx.getStorageSync('statisticData') == '' ? [] : wx.getStorageSync('statisticData');
+      console.log(wx.getStorageSync('statisticData'));
+      
+      wx.setStorageSync('statisticData', JSON.stringify([
+        ...statisticData,
+        {
+          name: this.data.name,
+          rate: this.data.rate,
+          duration: this.data.duration,
+          total: this.data.list.length,
+          rightNum,
+          date: toDay().date,
+          time: toDay().time
+        }
+      ]));
       this.handelOverlay();
     }
   },
@@ -146,7 +167,8 @@ Page<IIntroData, IIntroPage>({
       list: randomNums,
       result: '',
       count: 1,
-      myResults: []
+      myResults: [],
+      timeList: []
     })
     this.onReady();
     const timer = this.selectComponent('#timer');
@@ -160,16 +182,23 @@ Page<IIntroData, IIntroPage>({
     this.reload();
   },
 
+  toStatistic() {
+    wx.navigateTo({
+      url: '../statistic/statistic',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(option: { index: any; method: any }) {
-    
+  onLoad(option: { index: string; method: string, name: string }) {
+
     let randomNums = this.generateRandomNums(Number(option.index), option.method);
     this.setData({
       list: randomNums,
       value: Number(option.index),
-      method: option.method
+      method: option.method,
+      name: option.name
     })
   },
 

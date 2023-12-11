@@ -162,8 +162,8 @@ export const getNum204 = () => {
 
 // 平方数
 export const getNum300 = () => {
-  // 生成10到99之间的随机整数，十位数为1~9，个位数为0~9
-  const num1 = Math.floor(Math.random() * 90 + 10);
+  // 生成10到20之间的随机整数，十位数为1~9，个位数为0~9
+  const num1 = 10 + Math.floor(Math.random() * 20);
   return { num1, num2: num1 };
 }
 
