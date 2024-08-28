@@ -11,7 +11,9 @@ Page({
       {name: '十位-十位', value: 901,  method: '-'},
       {name: '百位+百位', value: 902, method: '+'},
       {name: '百位-百位', value: 903,  method: '-'},
-      {name: '十位 × 个位', value: 904, method: '×'}
+      {name: '十位 × 个位', value: 904, method: '×'},
+      {name: '百位 × 个位', value: 906, method: '×'},
+      {name: '十位 × 十位', value: 905, method: '×'},
     ],
     tenMultiply: [
       {name: '平方数', value: 300, method: '×'},

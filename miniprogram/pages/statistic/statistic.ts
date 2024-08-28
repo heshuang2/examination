@@ -21,8 +21,15 @@ Page({
     const statisticData = Array.isArray(wx.getStorageSync('statisticData'))
     ? wx.getStorageSync('statisticData')
     : JSON.parse(wx.getStorageSync('statisticData'));
+    const isRemove = wx.getStorageSync('isRemove');
+    
+    if (!isRemove){
+        wx.setStorageSync('statisticData', []);
+        wx.setStorageSync('isRemove', true);
+    }
+    
     const total = statisticData.reduce((result, current) => result + current.total,0);
-    const rate = (statisticData.reduce((result, current) => result + current.rightNum,0) / total * 100 ).toFixed(1) + '%';
+    const rate = total !== 0 ? (statisticData.reduce((result, current) => result + current.rightNum,0) / total * 100 ).toFixed(1) + '%' : '-';
     const nowData = statisticData.filter(item => isToday(item.date));
     const nowTotal = nowData.reduce((result, current) => result + current.total,0);
     const nowRate = nowTotal !== 0 ? (nowData.reduce((result, current) => result + current.rightNum,0) / nowTotal * 100 ).toFixed(1) + '%' : '-';

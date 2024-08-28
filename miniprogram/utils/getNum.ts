@@ -6,6 +6,8 @@ export const getNum = (num: number) => {
     [902,  getNum902],
     [903,  getNum903],
     [904,  getNum904],
+    [905,  getNum905],
+    [906,  getNum906],
     [100,  getNum100],
     [101,  getNum901],
     [102,  getNum102],
@@ -61,6 +63,24 @@ export const getNum903 = () => {
 export const getNum904 = () => {
   // 生成10到99之间的随机整数，十位数为1~9，个位数为0~9
   const num1 = Math.floor(Math.random() * 90 + 10);
+  //  生成1到9之间的随机整数
+  const num2 = Math.floor(Math.random() * 9 + 1);
+  return { num1, num2 };
+}
+
+// 十位 × 十位
+export const getNum905 = () => {
+    // 生成10到99之间的随机整数，十位数为1~9，个位数为0~9
+    const num1 = Math.floor(Math.random() * 90 + 10);
+    //  生成1到9之间的随机整数
+    const num2 = Math.floor(Math.random() * 90 + 10);
+    return { num1, num2 };
+}
+
+// 百位 × 个位
+export const getNum906 = () => {
+   // 生成100到999之间的随机整数，百位数为1~9，十位数为1~9，个位数为0~9
+   const num1 = Math.floor(Math.random() * 900 + 100);
   //  生成1到9之间的随机整数
   const num2 = Math.floor(Math.random() * 9 + 1);
   return { num1, num2 };

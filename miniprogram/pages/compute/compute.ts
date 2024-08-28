@@ -2,6 +2,7 @@
 
 import { getNum } from "../../utils/getNum";
 import { toDay } from "../../utils/util";
+import Decimal from 'decimal.js';
 
 interface IIntroPage {
   generateRandomNums: (value: number, method: any) => Ilist[];
@@ -61,10 +62,10 @@ Page<IIntroData, IIntroPage>({
       const { num1, num2 } = this.generate(num);
 
       const map = new Map([
-        ['+', { compute: () => num1 + num2 }],
-        ['-', { compute: () => num1 - num2 }],
-        ['×', { compute: () => num1 * num2 }],
-        ['÷', { compute: () => num1 / num2 }],
+        ['+', { compute: () => new Decimal(num1).add(new Decimal(num2)).toNumber() }],
+        ['-', { compute: () => new Decimal(num1).sub(new Decimal(num2)).toNumber() }],
+        ['×', { compute: () => new Decimal(num1).mul(new Decimal(num2)).toNumber() }],
+        ['÷', { compute: () => new Decimal(num1).div(new Decimal(num2)).toNumber() }],
         ['%', { compute: () => num2 }],
       ])
 
@@ -141,8 +142,11 @@ Page<IIntroData, IIntroPage>({
         showResult: false
       })
       // 存储答题数据
-      const statisticData = wx.getStorageSync('statisticData') == '' ? [] : wx.getStorageSync('statisticData');
-      console.log(wx.getStorageSync('statisticData'));
+      let statisticData = wx.getStorageSync('statisticData') == '' ? [] : wx.getStorageSync('statisticData');
+      statisticData = Array.isArray(statisticData)
+      ? statisticData
+      : JSON.parse(statisticData);
+      console.log(statisticData);
       
       wx.setStorageSync('statisticData', JSON.stringify([
         ...statisticData,
